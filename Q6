@@ -1,0 +1,17 @@
+def calculate_average(*marks):
+    return sum(marks) / len(marks)
+
+
+def get_grade(avg, pass_mark=40):
+
+    if avg >= 80:
+        return "A"
+
+    elif avg >= 60:
+        return "B"
+
+    elif avg >= pass_mark:
+        return "C"
+
+    else:
+        return "Fail"
