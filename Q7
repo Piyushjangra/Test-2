@@ -1,0 +1,58 @@
+import json
+
+class ProductNotFoundError(Exception):
+    pass
+
+products = [
+    {"name": "Laptop", "price": 50000, "category": "Electronics", "quantity": 4},
+    {"name": "Mouse", "price": 500, "category": "Electronics", "quantity": 10},
+    {"name": "Table", "price": 3000, "category": "Furniture", "quantity": 2},
+    {"name": "Bottle", "price": 200, "category": "Kitchen", "quantity": 0},
+    {"name": "Phone", "price": 25000, "category": "Electronics", "quantity": 6},
+    {"name": "Chair", "price": 1500, "category": "Furniture", "quantity": 3}
+]
+
+# (b) Low Stock Generator
+def low_stock(items, threshold=5):
+    for p in items:
+        if p["quantity"] < threshold:
+            yield p
+
+print("Low Stock Products")
+for x in low_stock(products):
+    print(x)
+
+# (c) Expensive Items Generator
+def expensive_items(items, min_price=1000):
+    for p in items:
+        if p["price"] > min_price:
+            yield p
+
+print("\nExpensive Products")
+for x in expensive_items(products):
+    print(x)
+
+# (d) List Comprehension
+upper_names = [p["name"].upper() for p in products if p["category"] == "Electronics"]
+
+print("\nUppercase Names")
+print(upper_names)
+
+# (e) map() with lambda (10% price increase)
+updated = list(map(lambda p: {
+    "name": p["name"],
+    "price": p["price"] * 1.10,
+    "category": p["category"],
+    "quantity": p["quantity"]
+}, products))
+
+print("\nUpdated Prices")
+for p in updated:
+    print(p)
+
+# (f) filter() with lambda
+available = list(filter(lambda p: p["quantity"] > 0, updated))
+
+print("\nAvailable Products")
+for p in available:
+    print(p)
