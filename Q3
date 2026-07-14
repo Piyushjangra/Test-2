@@ -1,0 +1,13 @@
+def calculate_tax(*salary):
+    try:
+        tax_list = list(map(lambda amt: amt * 0.10, salary))
+        total = sum(tax_list)
+        return total
+
+    except TypeError:
+        print("Salary should be numeric.")
+
+    except Exception as err:
+        print("Error:", err)
+
+print("Total Tax =", calculate_tax(25000, 30000, 28000))
