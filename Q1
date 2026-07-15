@@ -1,8 +1,4 @@
-numbers = []
+nums = [i for i in range(1, 51) if i % 3 == 0]
 
-for i in range(1, 51):
-    if i % 3 == 0:
-        numbers.append(i)
-
-print(numbers)
-print(len(numbers))
+print("Numbers:", nums)
+print("Length:", len(nums))
